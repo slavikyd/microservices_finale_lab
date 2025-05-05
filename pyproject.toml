@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "backend"
+version = "0.0.1"
+description = ""
+authors = ["slavikyd <slavikyd@gmail.com>"]
+
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.12"
+asyncio = "^3.4.3"
+uvicorn = "^0.34.2"
+grpcio-tools = "^1.71.0"
+yoyo-migrations = "^9.0.0"
+psycopg2 = "^2.9.10"
+asyncpg = "^0.30.0"
+sqlalchemy = "^2.0.40"
+pyjwt = "^2.10.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
