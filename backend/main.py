@@ -1,21 +1,19 @@
 import asyncio
+import datetime
 import json
+import os
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
 import grpc
+import httpx
 import jwt
-import uvicorn
-from fastapi import FastAPI
-
 import proto.main_pb2 as pb
 import proto.main_pb2_grpc as cf
+import uvicorn
 from db import ws_requests
 from db.postgres import engine
-
-import os
-import datetime
-import httpx
+from fastapi import FastAPI
 
 key_begin = '-----BEGIN PUBLIC KEY-----\n'
 key_end = '\n-----END PUBLIC KEY-----'
@@ -104,11 +102,6 @@ class Service(cf.CentrifugoProxyServicer):
                 channel=request.channel,
                 can_publish=True,
             )
-            # if ws_requests.AsyncQuerier.user_can_subscribe(request.user):
-            #     pass
-            # else:
-            #     print('User cannot subscribe. Not allowed', flush=True)
-            #     return 401 # TODO: some proper return
 
             await connection.commit()
         return pb.SubscribeResponse()

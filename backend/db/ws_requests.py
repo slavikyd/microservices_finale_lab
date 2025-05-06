@@ -2,14 +2,12 @@
 # versions:
 #   sqlc v1.29.0
 # source: ws-requests.sql
-from typing import AsyncIterator, Iterator, Optional
 import uuid
+from typing import AsyncIterator, Iterator, Optional
 
 import sqlalchemy
 import sqlalchemy.ext.asyncio
-
 from db import models
-
 
 CHAN_LIST_BY_USER_ID = """-- name: chan_list_by_user_id \\:many
 SELECT "channel"."id", "channel"."channel", "channel"."title", "channel"."default"
